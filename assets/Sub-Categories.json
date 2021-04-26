@@ -1,0 +1,25 @@
+{
+  "TV": [
+    "32-inches",
+    "40-inches",
+    "43-inches",
+    "50-inches"
+  ],
+  "Mobiles": [
+    "under-10000",
+    "under-15000",
+    "under-20000",
+    "under-30000",
+    "above-30000"
+  ],
+  "Washing Machines": [
+    "fully-automatic",
+    "semi-automatic",
+    "front-loading",
+    "top-loading"
+  ],
+  "Hair dryer": [
+    "under-2000",
+    "above-2000"
+  ]
+}
