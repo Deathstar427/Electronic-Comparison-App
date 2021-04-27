@@ -73,7 +73,7 @@ class GadgetsState extends State<Gadgets> {
     );
   }
 }
-  const urlpop ="https://aqueous-fortress-60483.herokuapp.com/popular/Mobile";
+ 
 
 class HomePage extends StatelessWidget {
   @override
@@ -97,6 +97,88 @@ class Subcat extends StatefulWidget {
 int i;
 
 bool tapValue = false;
+class pop extends StatefulWidget{
+  const pop ({Key key}): super(key: key);
+  @override
+  State<StatefulWidget> createState() {
+    return(popstate());
+  }
+  
+
+}
+
+class popstate extends State<pop>{
+  final String urlpop ="https://aqueous-fortress-60483.herokuapp.com/popular/Mobile";
+ List poplist=[];
+ Widget popular(String name, String imgUrl, int pos) {
+    return InkWell(
+      onTap: () {
+        
+      },
+      child: Container(
+        width: 180,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Column(children: [
+          Image(
+            image: NetworkImage(imgUrl),
+            width: 170,
+            height: 200,
+            alignment: Alignment.center,
+          ),
+          Center(
+            child: Text(name),
+          )
+        ]),
+      ),
+    );
+  }
+  List<String> ImgUrl = [
+    'https://st.depositphotos.com/1265046/1328/i/600/depositphotos_13280842-stock-photo-tv-screen-white.jpg',
+    'https://previews.123rf.com/images/tkm106/tkm1062005/tkm106200501000/147786472-photo-frame-smartphone-screen-transparent-material.jpg',
+    'https://media.istockphoto.com/vectors/washing-machine-icon-vector-isolated-on-white-background-washing-vector-id1029730410',
+    'https://cdn0.iconfinder.com/data/icons/elasto-electronics-and-appliances/26/05_hairdryer-512.png',
+    'https://images.vexels.com/media/users/3/157345/isolated/preview/934008c8466ce089e15947cec0a7c61d-flat-laptop-icon-laptop-by-vexels.png',
+  ];
+
+ @override
+ void initState(){
+   super.initState();
+   this.fetchpop();
+ }
+  Future fetchpop() async{
+    http.Response response;
+    response = await http.get(urlpop);
+    Uri.encodeFull(urlpop);
+    if (response.statusCode == 200) {
+      setState(() {
+        var convertData = json.decode(response.body);
+        poplist= convertData;
+        
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold( body: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: poplist.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      child: popular(poplist[index]['Title'], ImgUrl[1], index),
+                      elevation: 10,
+                    );
+                  }),
+
+    );
+    
+  }
+
+
+}
 
 class SubCatState extends State<Subcat> {
   int tye = 0;
@@ -114,19 +196,9 @@ class SubCatState extends State<Subcat> {
       list = data[a];
     });
   }
-
-  List pop=[];
-
-  Future fetchpop() async{
-    http.Response response;
-    response = await http.get(urlpop);
-    if (response.statusCode == 200) {
-      setState(() {
-        pop = json.decode(response.body);
-        
-      });
-    }
-  }
+ GlobalKey<popstate> _mykey = GlobalKey();
+  
+ 
 
   
 
@@ -317,9 +389,7 @@ class SubCatState extends State<Subcat> {
   Widget popular(String name, String imgUrl, int pos) {
     return InkWell(
       onTap: () {
-        setState(() {
-          fetchData1(name);
-        });
+        
       },
       child: Container(
         width: 180,
@@ -335,7 +405,7 @@ class SubCatState extends State<Subcat> {
             alignment: Alignment.center,
           ),
           Center(
-            child: Text(""),
+            child: Text(name),
           )
         ]),
       ),
@@ -457,15 +527,7 @@ class SubCatState extends State<Subcat> {
               height: 250,
               width: double.infinity,
               color: Colors.grey[50],
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: list2.length,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      child: popular(list2[index], ImgUrl[1], index),
-                      elevation: 10,
-                    );
-                  })),
+              child:pop(key: _mykey,),),
         ],
       ),
     ));
