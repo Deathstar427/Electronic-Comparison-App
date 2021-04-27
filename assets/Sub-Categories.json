@@ -21,5 +21,11 @@
   "Hair dryer": [
     "under-2000",
     "above-2000"
+  ],
+  "Laptops": [
+    "i5",
+    "i7",
+    "Ryzen 5",
+    "Ryzen 7"
   ]
 }
