@@ -63,7 +63,7 @@ class _Page2State extends State<Page2> {
       });
     }
   }
-
+ 
   void navigateToPage3(List<int> list1, String urlP3, String ty) async {
     // ignore: unused_local_variable
     bool result = await Navigator.push(context,
@@ -76,7 +76,7 @@ class _Page2State extends State<Page2> {
     fetchData();
     super.initState();
   }
-
+  
   @override
   Widget build(BuildContext context) {
     //  final size = MediaQuery.of(context).size;
@@ -159,7 +159,7 @@ class _Page2State extends State<Page2> {
                                                             TextAlign.left),
                                                     RatingBarIndicator(
                                                       rating: star2,
-                                                      itemBuilder: (_, __) {
+                                                      itemBuilder: (_,__) {
                                                         return Icon(
                                                           Icons.star,
                                                           color:
@@ -167,6 +167,7 @@ class _Page2State extends State<Page2> {
                                                         );
                                                       },
                                                       itemSize: 25,
+                                                    
                                                     ),
                                                   ],
                                                 ),
