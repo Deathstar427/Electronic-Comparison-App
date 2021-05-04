@@ -1,6 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.final_app">
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.INTERNET"/>
+=======
+     <uses-permission android:name="android.permission.INTERNET"/>
+>>>>>>> bc8eb4a76fbf631c89fdffdf197429e1121090aa
    <application
         android:label="final_app"
         android:icon="@mipmap/ic_launcher">
