@@ -203,24 +203,24 @@ class SubCatState extends State<Subcat> {
   
 
   List<String> suggestions = [
-    "Mobiles under-10000",
-    "Mobiles under-15000",
-    "Mobiles under-20000",
-    "Mobiles under-30000",
-    "Mobiles above-50000",
-    "under-10000 Mobiles",
-    "under-15000 Mobiles",
-    "under-20000 Mobiles",
-    "under-30000 Mobiles",
-    "above-50000 Mobiles",
-    "TV 32-inches",
-    "TV 40-inches",
-    "TV 43-inches",
-    "TV 50-inches",
-    "32-inches TV",
-    "40-inches TV",
-    "43-inches TV",
-    "50-inches TV",
+    "Mobiles under-10000 ",
+    "Mobiles under-15000 ",
+    "Mobiles under-20000 ",
+    "Mobiles under-30000 ",
+    "Mobiles above-50000 ",
+    "under-10000 Mobiles ",
+    "under-15000 Mobiles ",
+    "under-20000 Mobiles ",
+    "under-30000 Mobiles ",
+    "above-50000 Mobiles ",
+    "TV 32-inches ",
+    "TV 40-inches ",
+    "TV 43-inches ",
+    "TV 50-inches ",
+    "32-inches TV ",
+    "40-inches TV ",
+    "43-inches TV ",
+    "50-inches TV ",
     "TV Samsung Brand",
     "TV LG Brand",
     "TV TCL Brand",
@@ -270,6 +270,7 @@ class SubCatState extends State<Subcat> {
                         navigateToPage2("TV", item[0][1], 1);
                       else {
                         navigateToPage2("TV", item[0][1], 0);
+                       
                       }
                       item.clear();
                     }
