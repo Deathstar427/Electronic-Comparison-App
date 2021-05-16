@@ -199,41 +199,20 @@ class SubCatState extends State<Subcat> {
  GlobalKey<popstate> _mykey = GlobalKey();
   
  
+  List sugg = [];
+  Future<void> fetchsugg() async {
+    final String response = await rootBundle.loadString('assets/Suggestion.json');
+    final data = await json.decode(response);
+    setState(() {
+      sugg = data['Suggestions'].cast<String>();
+      for (int i = 0; i < sugg.length; i++) {
+        print(sugg[i]);
+      }
+    });
+  }
+
 
   
-
-  List<String> suggestions = [
-    "Mobiles under-10000 ",
-    "Mobiles under-15000 ",
-    "Mobiles under-20000 ",
-    "Mobiles under-30000 ",
-    "Mobiles above-50000 ",
-    "under-10000 Mobiles ",
-    "under-15000 Mobiles ",
-    "under-20000 Mobiles ",
-    "under-30000 Mobiles ",
-    "above-50000 Mobiles ",
-    "TV 32-inches ",
-    "TV 40-inches ",
-    "TV 43-inches ",
-    "TV 50-inches ",
-    "32-inches TV ",
-    "40-inches TV ",
-    "43-inches TV ",
-    "50-inches TV ",
-    "TV Samsung Brand",
-    "TV LG Brand",
-    "TV TCL Brand",
-    "TV Sanyo Brand",
-    "TV MI Brand",
-    "TV Onida Brand",
-    "Mobiles Samsung Brand",
-    "Mobiles Redmi Brand",
-    "Mobiles Oppo Brand",
-    "Mobiles Vivo Brand",
-    "Mobiles Nokia Brand",
-    "Mobiles Micromax Brand"
-  ];
 
   // ignore: non_constant_identifier_names
   Widget Text1() {
@@ -253,7 +232,7 @@ class SubCatState extends State<Subcat> {
             color: Color(0xFF1C3C9B),
           ),
         ),
-        suggestions: suggestions,
+        suggestions: sugg,
         controller: TextEditingController(),
         textChanged: (text) => currentText = text,
         clearOnSubmit: true,
@@ -474,6 +453,7 @@ class SubCatState extends State<Subcat> {
   void initState() {
     super.initState();
     fetchData();
+    fetchsugg();
     EasyLoading.addStatusCallback((status) {
       print('EasyLoading Status $status');
       if (status == EasyLoadingStatus.dismiss) {

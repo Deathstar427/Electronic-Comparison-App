@@ -58,6 +58,7 @@ flutter:
   assets:
       - Category.json
       - Sub-Categories.json
+      - Suggestion.json
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
